@@ -124,16 +124,14 @@ function start() {
       let space = document.getElementById(`space-${tower.dataset.id}`);
       if (draggedElement.parentElement.firstChild == draggedElement) {
         if (!space.firstChild || draggedElement.dataset.id < space.firstChild.dataset.id) {
-
-          space.prepend(draggedElement);
           currentStep = currentStep + 1;
-
           const info = document.createElement('li');
           info.innerText = `${currentStep}. F${draggedElement.dataset.id} - T${draggedElement.parentElement.dataset.id} : T${e.target.dataset.id}`;
           movements.prepend(info)
 
           num_movements.innerText = currentStep
 
+          space.prepend(draggedElement);
           if (currentStep >= steps) {
             comprobateWin();
           }
